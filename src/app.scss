@@ -1,0 +1,16 @@
+/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
+@import url('https://fonts.googleapis.com/css2?family=BioRhyme&family=Libre+Franklin:wght@300&family=Numans&display=swap');
+
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    background: rgb(42,100,192);
+    background: linear-gradient(180deg, rgba(42,100,192,1) 0%, rgba(80,149,228,1) 35%, rgba(42,100,192,1) 81%, rgba(0,212,255,1) 100%);
+}
+h1{
+    @include font-toplevel
+}
+span{
+    @include font-small
+}

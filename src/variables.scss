@@ -1,0 +1,10 @@
+/* Variables and mixins declared here will be available in all other SCSS files */
+@mixin font-toplevel() {
+    font-family: 'BioRhyme', serif;
+}
+@mixin font-middium() {
+    font-family: 'Libre Franklin', sans-serif;
+}
+@mixin font-small(){
+    font-family: 'Numans', sans-serif;
+}
