@@ -1,10 +1,19 @@
 /* Variables and mixins declared here will be available in all other SCSS files */
+$text-color: #000;
 @mixin font-toplevel() {
     font-family: 'BioRhyme', serif;
 }
-@mixin font-middium() {
+@mixin font-medium() {
     font-family: 'Libre Franklin', sans-serif;
 }
 @mixin font-small(){
     font-family: 'Numans', sans-serif;
+}
+@mixin glassmorphism{
+    background: rgba( 231, 153, 153, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }

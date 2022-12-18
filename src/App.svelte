@@ -22,8 +22,11 @@
 		}
 	}
 	
+    
 	async function getWeather(){
-		let out = await fetch("https://api.open-meteo.com/v1/forecast?latitude="+Latitude+"&longitude="+Longitude+"&hourly=temperature_2m&windspeed_unit=mph&timeformat=unixtime")
+        const timezone = "GMT"
+        let url = `https://api.open-meteo.com/v1/forecast?latitude=`+Latitude+`&longitude=`+Longitude+`&hourly=temperature_2m,relativehumidity_2m,precipitation,rain,showers,snowfall,snow_depth,freezinglevel_height,pressure_msl,surface_pressure,cloudcover,cloudcover_low,cloudcover_mid,cloudcover_high,visibility,windspeed_10m,windspeed_80m,winddirection_10m,winddirection_80m,windgusts_10m,temperature_80m,soil_temperature_0cm,soil_temperature_6cm,soil_moisture_0_1cm,soil_moisture_1_3cm&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&windspeed_unit=mph&timeformat=unixtime&timezone=`+ timezone
+		let out = await fetch(url)
 		return out.json()
 	}
 	
@@ -56,26 +59,24 @@
 	<h1>loading...</h1>
 	{:then wh} 
 	<div class="card">
-		<Graph data={wh}/>
+		<Graph data={wh} data-showing="temperature_2m" data_title="temperature ℃"/>
 	</div>
 	<div class="card">
-		<h1>Your elevation: {wh["elevation"]}</h1>
+		<Graph data={wh} data_showing="relativehumidity_2m" data_title="Humidity %" />
+	</div>
+	<div class="card">
+		<span>Your elevation: {wh["elevation"]}</span>
 	</div>
 	{/await}
 	{/if}
 	{/if}
 </main>
-<style>
+<style lang="scss">
 	.card{
-		background: rgba( 231, 153, 153, 0.25 );
-		box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-		backdrop-filter: blur( 4px );
-		-webkit-backdrop-filter: blur( 4px );
-		border-radius: 10px;
-		border: 1px solid rgba( 255, 255, 255, 0.18 );
-		margin: 10px;
+        @include glassmorphism;
+		margin: 5px;
 		padding: 10px;
 		width: 900px;
-		color:white
+		color: $text-color;
 	}
 </style>

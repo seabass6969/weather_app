@@ -14,3 +14,32 @@ h1{
 span{
     @include font-small
 }
+button{
+    border-style: none;
+    
+}
+
+button{
+    @include font-medium;
+    border-radius: 0;
+    font-style: italic;
+    border-style:ridge;
+    background-color: bisque;
+    background-color: #8E44AD;
+    box-shadow: 4px 4px;
+    margin: 6px;
+}
+button:hover{
+    animation: hoverbutton 500ms forwards;
+}
+.defaultbtn:after{
+    animation: hoverbutton 500ms backwards;
+}
+@keyframes hoverbutton {
+    from {
+        box-shadow: 4px 4px;
+    }
+    to {
+        box-shadow: 5px 5px;
+    }
+}
