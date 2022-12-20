@@ -5,8 +5,9 @@ body{
     width: 100vw;
     height: 100vh;
     margin: 0px;
-    background: rgb(42,100,192);
+    background-color: #00d3fe;
     background: linear-gradient(180deg, rgba(42,100,192,1) 0%, rgba(80,149,228,1) 35%, rgba(42,100,192,1) 81%, rgba(0,212,255,1) 100%);
+    overflow: hidden;
 }
 h1{
     @include font-toplevel

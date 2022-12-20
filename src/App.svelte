@@ -1,6 +1,7 @@
 <script>
 	import {onMount} from 'svelte'
 	import Graph from './lib/Graph.svelte';
+    import Icon from './lib/Icon.svelte';
 	
 	let support_or_not = false 
 	let loading = false
@@ -45,8 +46,8 @@
 	})
 </script>
 
-<main>
-	<div class="card">
+<main >
+	<div class="card titlecard">
 		<h1>The weather is:</h1>
 	</div>
 	{#if support_or_not == false}
@@ -58,25 +59,54 @@
 	{#await getWeather()}
 	<h1>loading...</h1>
 	{:then wh} 
-	<div class="card">
-		<Graph data={wh} data-showing="temperature_2m" data_title="temperature ℃"/>
-	</div>
-	<div class="card">
-		<Graph data={wh} data_showing="relativehumidity_2m" data_title="Humidity %" />
-	</div>
-	<div class="card">
-		<span>Your elevation: {wh["elevation"]}</span>
-	</div>
+    <div class="cardgrid">
+        <div class="normalcard card">
+            <Graph data={wh} data-showing="temperature_2m" data_title="temperature ℃"/>
+        </div>
+        <div class="normalcard card">
+            <Graph data={wh} data_showing="relativehumidity_2m" data_title="Humidity %" />
+        </div>
+    </div>
+    <div class="cardgrid">
+        <div class="normalcard card">
+            <Graph data={wh} data_showing="precipitation" data_title="Precipitation mm" />
+        </div>
+    </div>
+    <div class="card longcard">
+        <span><Icon icon="stairs"/> elevation: {wh["elevation"]}</span>
+    </div>
 	{/await}
 	{/if}
 	{/if}
 </main>
 <style lang="scss">
+    .titlecard{
+        width: 93vw;
+    }
+    .titlecard h1{
+        margin: 1px;
+    }
 	.card{
         @include glassmorphism;
-		margin: 5px;
-		padding: 10px;
-		width: 900px;
+        margin: 0.5vw;
 		color: $text-color;
+        display: grid;
+        justify-content: center;
+        align-items: center;
 	}
+    .cardgrid {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    .normalcard {
+		padding: 10px;
+		width: 46vw;
+    }
+    .longcard {
+        width: 93vw;
+    }
+    main {
+        display: grid;
+        justify-content: center
+    }
 </style>

@@ -74,13 +74,13 @@
 <button on:click={()=> {changeContentChart(48)}}>48 Hours</button>
 <button on:click={()=> {changeContentChart(168)}}>Weeks</button>
 </div>
-<div style="width: 800px;">
+<div style="width: 42vw;">
   <canvas id="{data_showing}"></canvas>
 </div>
 <style>
     .row{
         display: grid;
         grid-template-columns: auto auto auto auto;
-        width: 800px
+        width: 42vw
     }
 </style>
